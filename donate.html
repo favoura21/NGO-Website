@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - NGO Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<div class="bg-gray-800 text-white py-2 px-4">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
+        
+        <!-- Contact Info -->
+        <div class="text-sm flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+            <span>Dominican</span>
+            <span class="hidden sm:inline">|</span>
+            <span>info@example.com</span>
+        </div>
+        
+        <!-- Social Icons -->
+        <div class="flex flex-wrap justify-center items-center gap-3 mt-2 md:mt-0 text-sm">
+            <span class="block sm:inline">Follow us:</span>
+            <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+
+    </div>
+</div>
+
+        <!-- Navbar -->
+        <div class="bg-white shadow sticky top-0 z-50">
+            <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+                
+                <!-- Logo -->
+                <div class="text-2xl font-bold">CharityLogo</div>
+        
+                <!-- Hamburger Button (Mobile) -->
+                <button id="menu-btn" class="md:hidden text-2xl focus:outline-none">
+                    &#9776;
+                </button>
+        
+                <!-- Nav Links -->
+                <nav id="menu" class="hidden md:block">
+                    <ul class="flex flex-col md:flex-row md:space-x-6 space-y-2 md:space-y-0">
+                        <li><a href="index.html" class="nav-link hover:text-blue-600">Home</a></li>
+                        <li><a href="about.html" class="nav-link hover:text-blue-600">About</a></li>
+                        <li><a href="causes.html" class="nav-link hover:text-blue-600">Causes</a></li>
+                        <li class="relative group">
+                            <a href="#" class="hover:text-blue-600">Pages</a>
+                            <ul class="absolute hidden group-hover:block bg-white shadow-lg p-4 mt-2 w-40">
+                                <li><a href="service.html" class="block py-1 hover:text-blue-600">Service</a></li>
+                                <li><a href="donate.html" class="block py-1 hover:text-blue-600">Donate</a></li>
+                                <li><a href="team.html" class="block py-1 hover:text-blue-600">Our Team</a></li>
+                                <li><a href="testimonial.html" class="block py-1 hover:text-blue-600">Testimonial</a></li>
+                                <li><a href="404.html" class="block py-1 hover:text-blue-600">404 Page</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html" class="nav-link hover:text-blue-600">Contact</a></li>
+                    </ul>
+                </nav>
+        
+                <!-- Donate Button -->
+                <a href="donate.html" class="hidden md:inline bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Donate Now</a>
+            </div>
+        
+            <!-- Mobile Donate Button -->
+            <div id="mobile-donate" class="hidden bg-blue-600 text-white text-center py-2 md:hidden">
+                <a href="donate.html" class="block hover:bg-blue-700">Donate Now</a>
+            </div>
+        </div>
+        
+        <script>
+            // Mobile Menu Toggle
+            const menuBtn = document.getElementById('menu-btn');
+            const menu = document.getElementById('menu');
+            const mobileDonate = document.getElementById('mobile-donate');
+        
+            menuBtn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                mobileDonate.classList.toggle('hidden');
+            });
+        
+            // Active Link Highlight
+            const currentPage = window.location.pathname.split("/").pop();
+            document.querySelectorAll(".nav-link").forEach(link => {
+                if (link.getAttribute("href") === currentPage) {
+                    link.classList.add("text-blue-600", "font-semibold");
+                }
+            });
+        </script>
+    
+        <!-- Hero Section -->
+        <div class="relative">
+            <div class="container mx-auto px-4 py-16">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2">
+                        <h1 class="text-4xl font-bold mb-4">Let's Change The World With Humanity</h1>
+                        <p class="text-gray-600 mb-6">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, quasi laboriosam? Corporis dignissimos fugiat corrupti,</p>
+                        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700">Learn More</a>
+                    </div>
+                    <div class="relative md:w-1/2 mt-8 md:mt-0">
+                        <div id="slider" class="relative overflow-hidden rounded-lg">
+                            <img src="img/download (1).webp" alt="Hero Image" class="w-full">
+                            <img src="img/download.webp" alt="Hero Image" class="w-full hidden">
+                            <img src="img/OIP (1).webp" alt="Hero Image" class="w-full hidden">
+                        </div>
+                    
+                        <!-- Controls -->
+                        <div class="absolute inset-0 flex items-center justify-between px-4">
+                            <button id="prev" class="bg-black/50 text-white p-2 rounded-full hover:bg-black/70">&#10094;</button>
+                            <button id="next" class="bg-black/50 text-white p-2 rounded-full hover:bg-black/70">&#10095;</button>
+                        </div>
+                    </div>
+                    
+                    <script>
+                        const slides = document.querySelectorAll("#slider img");
+                        let index = 0;
+                    
+                        function showSlide(i) {
+                            slides.forEach(slide => slide.classList.add("hidden"));
+                            slides[i].classList.remove("hidden");
+                        }
+                    
+                        document.getElementById("prev").addEventListener("click", () => {
+                            index = (index - 1 + slides.length) % slides.length;
+                            showSlide(index);
+                        });
+                    
+                        document.getElementById("next").addEventListener("click", () => {
+                            index = (index + 1) % slides.length;
+                            showSlide(index);
+                        });
+                    
+                        // Auto slide every 3 seconds
+                        setInterval(() => {
+                            index = (index + 1) % slides.length;
+                            showSlide(index);
+                        }, 3000);
+                    
+                        showSlide(index);
+                    </script>
+                </div>
+            </div>
+        </div>
+    <div class="bg-gray-200 py-4">
+        <div class="container mx-auto px-4">
+            <nav class="flex space-x-2 text-sm">
+                <a href="index.html" class="hover:text-blue-600">Home</a>
+                <span>></span>
+                <a href="#" class="hover:text-blue-600">Pages</a>
+                <span>></span>
+                <span class="text-blue-600">Donate</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Donate Section -->
+    <div class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Donate Now</h2>
+            <h3 class="text-2xl text-center mb-12">Thanks For The Results Achieved With You</h3>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2">
+                    <p class="text-gray-600 mb-6">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.</p>
+                </div>
+                <div class="md:w-1/2 mt-8 md:mt-0 md:pl-8">
+                    <div class="bg-white shadow rounded-lg p-6">
+                        <input type="text" placeholder="Your Name" class="w-full p-2 mb-4 border rounded">
+                        <input type="email" placeholder="Your Email" class="w-full p-2 mb-4 border rounded">
+                        <div class="flex space-x-4 mb-4">
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">$10</button>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">$20</button>
+                            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">$30</button>
+                        </div>
+                        <button class="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Donate Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (same as about.html) -->
+    <div class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">CharityLogo</h3>
+                    <p class="text-gray-400 mb-4">Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Address</h3>
+                    <p class="text-gray-400">Dominican</p>
+                    <p class="text-gray-400">+012 345 67890</p>
+                    <p class="text-gray-400">info@example.com</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="service.html" class="text-gray-400 hover:text-white">Our Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms & Condition</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                    <div class="flex">
+                        <input type="email" placeholder="Your email" class="w-full p-2 rounded-l">
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-r hover:bg-blue-700">SignUp</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 text-center">
+                <p>&copy; ChariLogo, All Right Reserved.</p>
+                <p>Designed By <a href="#" class="text-blue-400 hover:text-blue-600">AeedDavidon</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
