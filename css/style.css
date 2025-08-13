@@ -654,6 +654,11 @@
 }
 
 @media (min-width: 768px) {
+    /* Desktop hover for dropdowns */
+    .dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+
     .testimonial-carousel::before,
     .testimonial-carousel::after {
         width: 200px;

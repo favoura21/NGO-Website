@@ -146,56 +146,31 @@
      sidebarOverlay.addEventListener('click', closeSidebar);
 
      // Close sidebar when clicking on links
-     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+     function isMobileView() {
+    return window.innerWidth <= 768; // adjust breakpoint to your design
+}
 
-     // Handle dropdown open/close
-     // --- Replace your current dropdown code with this ---
-     // Toggle a dropdown open/closed when its parent is clicked
-     sidebar.addEventListener('click', (e) => {
-     const toggle = e.target.closest('.dropdown-toggle');
-     if (!toggle) return; // not a dropdown parent
+sidebar.addEventListener('click', (e) => {
+    const toggle = e.target.closest('.dropdown-toggle');
+    if (!toggle) return; // not a dropdown parent
 
-     e.preventDefault();
+    // Only run click toggle if in mobile view
+    if (!isMobileView()) return;
 
-      // Find the associated dropdown menu
-      let menu = null;
+    e.preventDefault();
 
-      // 1) If you wired it with data-target, use that
-     if (toggle.dataset.target) {
-      menu = document.querySelector(toggle.dataset.target);
-     }
+    const dropdownMenu = toggle.nextElementSibling;
+    const isOpen = dropdownMenu.classList.contains('active');
+    dropdownMenu.classList.toggle('active', !isOpen);
+    toggle.classList.toggle('open', !isOpen);
+});
 
-      // 2) Otherwise, try the direct child .dropdown-menu
-      if (!menu) {
-      const container = toggle.closest('.dropdown') || toggle.parentElement;
-       menu = container?.querySelector(':scope > .dropdown-menu') || toggle.nextElementSibling;
-      }
-
-      if (!menu) return;
-
-      // Toggle open/close on repeated clicks
-       const isOpen = menu.classList.contains('active');
-      menu.classList.toggle('active', !isOpen);
-       toggle.classList.toggle('open', !isOpen);
-      toggle.setAttribute('aria-expanded', String(!isOpen));
-      });
-
-        // Close sidebar if any dropdown child link is clicked (keep your existing function)
-       document.querySelectorAll('.dropdown-menu .sidebar-link').forEach(link => {
-       link.addEventListener('click', () => {
-       closeSidebar();
-       document.querySelectorAll('.dropdown-menu.active').forEach(m => m.classList.remove('active'));
-       document.querySelectorAll('.dropdown-toggle.open').forEach(t => t.classList.remove('open'));
-
-      });
-      });
-
-
-       // Handle dropdown child link click
-       document.querySelectorAll('.dropdown-menu .sidebar-link').forEach(link => {
-        link.addEventListener('click', () => {
+// Close sidebar on child link click (works for both views)
+document.querySelectorAll('.dropdown-menu .sidebar-link').forEach(link => {
+    link.addEventListener('click', () => {
         closeSidebar();
-        });
+    });
+
         });
     </script>
     <!-- Hero Section -->
