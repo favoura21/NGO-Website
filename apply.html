@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - NGO Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<div class="bg-gray-800 text-white py-2 px-4">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
+        
+        <!-- Contact Info -->
+        <div class="text-sm flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+            <span>Dominican</span>
+            <span class="hidden sm:inline">|</span>
+            <span>info@example.com</span>
+        </div>
+        
+        <!-- Social Icons -->
+        <div class="flex flex-wrap justify-center items-center gap-3 mt-2 md:mt-0 text-sm">
+            <span class="block sm:inline">Follow us:</span>
+            <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+
+    </div>
+</div>
+
+       <!-- Navigation -->
+       <nav class="navbar">
+          <div class="nav-container">
+             <!-- Logo -->
+             <div class="text-2xl font-bold">iSABI</div>
+             <!-- Desktop Menu -->
+              <ul class="nav-menu">
+                  <li class="nav-item">
+                     <a href="index.html" class="nav-link">Home</a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="about.html" class="nav-link">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="training.html" class="nav-link">Training</a>
+                  </li>
+                   <li class="nav-item dropdown">
+                      <a href="#" class="nav-link dropdown-toggle">
+                          Funding
+                         <span class="dropdown-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                         <li><a href="funding.html" class="dropdown-link">Fund us</a></li>
+                         <li><a href="donate.html" class="dropdown-link">Donate</a></li>
+                      </ul>
+                   </li>
+                  <li class="nav-item">
+                     <a href="apply.html" class="nav-link">Apply</a>
+                   </li>
+                  <li class="nav-item">
+                     <a href="testimonial.html" class="nav-link">Testimonials</a>
+                  </li>
+                   <li class="nav-item">
+                     <a href="contact.html" class="nav-link">Contact</a>
+                   </li>
+               </ul>
+             <!-- Mobile Menu Button -->
+               <div class="nav-toggle" id="mobile-menu">
+                 <span class="bar"></span>
+                 <span class="bar"></span>
+                 <span class="bar"></span>
+              </div>
+          </div>
+     </nav>
+
+      <!-- Mobile Sidebar Overlay -->
+      <div class="sidebar-overlay" id="sidebar-overlay"></div>
+           <!-- Mobile Sidebar -->
+           <div class="sidebar" id="sidebar">
+              <div class="sidebar-header">
+             <!-- Logo -->
+             <div class="text-2xl font-bold">iSABI</div>
+             <button class="sidebar-close" id="sidebar-close">&times;</button>
+          </div>
+          <ul class="sidebar-menu">
+             <li class="sidebar-item">
+                 <a href="index.html" class="sidebar-link">Home</a>
+              </li>
+             <li class="sidebar-item">
+                 <a href="about.html" class="sidebar-link">About Us</a>
+              </li>
+              <li class="sidebar-item">
+                 <a href="training.html" class="sidebar-link">Training</a>
+              </li>
+              <li class="sidebar-item dropdown">
+                    <a href="#" class="sidebar-link dropdown-toggle">
+                        Funding
+                        <span class="dropdown-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="funding.html" class="dropdown-link">Fund us</a></li>
+                        <li><a href="donate.html" class="dropdown-link">Donate</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                   <a href="apply.html" class="sidebar-link">Apply</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="testimonial.html" class="sidebar-link">Testimonials</a>
+                </li>
+               <li class="sidebar-item">
+                  <a href="contact.html" class="sidebar-link">Contact</a>
+               </li>
+          </ul>
+      </div>
+      <script>
+         // Mobile menu toggle functionality
+         const mobileMenu = document.getElementById('mobile-menu');
+         const sidebar = document.getElementById('sidebar');
+         const sidebarOverlay = document.getElementById('sidebar-overlay');
+         const sidebarClose = document.getElementById('sidebar-close');
+         const sidebarLinks = document.querySelectorAll('.sidebar-link');
+         // Open sidebar
+         mobileMenu.addEventListener('click', () => {
+         sidebar.classList.add('active');
+         sidebarOverlay.classList.add('active');
+         document.body.style.overflow = 'hidden';
+          });
+
+          // Close sidebar
+            function closeSidebar() {
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            }
+
+            sidebarClose.addEventListener('click', closeSidebar);
+            sidebarOverlay.addEventListener('click', closeSidebar);
+
+            // Close sidebar when clicking on links
+            function isMobileView() {
+           return window.innerWidth <= 768; // adjust breakpoint to your design
+            }
+
+           sidebar.addEventListener('click', (e) => {
+           const toggle = e.target.closest('.dropdown-toggle');
+           if (!toggle) return; // not a dropdown parent
+
+           // Only run click toggle if in mobile view
+           if (!isMobileView()) return;
+
+           e.preventDefault();
+
+          const dropdownMenu = toggle.nextElementSibling;
+          const isOpen = dropdownMenu.classList.contains('active');
+          dropdownMenu.classList.toggle('active', !isOpen);
+          toggle.classList.toggle('open', !isOpen);
+           });
+
+          // Close sidebar on child link click (works for both views)
+          document.querySelectorAll('.dropdown-menu .sidebar-link').forEach(link => {
+          link.addEventListener('click', () => {
+          closeSidebar();
+          });
+
+          });
+      </script>
+      <br>
+      <!-- Breadcrumb -->
+    <div class="bg-gray-200 py-4">
+        <div class="container mx-auto px-4">
+            <nav class="flex space-x-2 text-sm">
+               <a href="index.html" class="hover:text-blue-600">Home</a>
+               <span>></span>
+               <span class="text-blue-600">Apply</span>
+            </nav>
+        </div>
+    </div>
+    <!-- Apply Section -->
+          <div class="py-16 bg-white">
+             <div class="container mx-auto px-4">
+                 <h2 class="text-3xl font-bold text-center mb-4">Apply</h2>
+                 <h3 class="text-2xl text-center mb-12">Who Can Apply?</h3>
+                 <p class="text-gray-600 mb-4">Successful applicants are typically young adults between 18 and 35 years old, and they must come from defined disadvantaged backgrounds.</p>
+                 <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Learn More</a>
+              </div>
+               <br>
+              <div class="container mx-auto px-4" >
+                 <h3 class="text-2xl text-center mb-12">How To Apply</h4>
+                 <p class="text-gray-600 mb-4">Please apply here...</p>
+                 <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Apply Now</a>
+              </div>
+          </div>
+
+   <!-- Footer -->
+        <div class="bg-gray-800 text-white py-16">
+          <div class="container mx-auto px-4">
+              <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                  <div>
+                      <h3 class="text-xl font-bold mb-4">iSABI</h3>
+                      <p class="text-gray-400 mb-4">Diam dolor diam ipsum sit. Aliqu diam amet diam et eos.</p>
+                      <div class="flex space-x-4">
+                          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                          <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                     </div>
+                  </div>
+                  <div>
+                      <h3 class="text-xl font-bold mb-4">Address</h3>
+                      <p class="text-gray-400">Dominican</p>
+                      <p class="text-gray-400">+012 345 67890</p>
+                      <p class="text-gray-400">info@example.com</p>
+                  </div>
+                  <div>
+                     <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                     <ul class="space-y-2">
+                      <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Our Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms & Condition</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Support</a></li>
+                     </ul>
+                  </div>
+                  <!-- Newsletter (Footer) -->
+                  <div class="text-xl font-bold mb-4">
+                    <h3 class="text-xl font-bold mb-4">Subscribe to our newsletter</h3>
+                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="flex items-center justify-center gap-2">
+                       <input type="email" name="email" placeholder="Your email" required class="px-3 py-2 w-48 sm:w-64 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500">
+                      <button type="submit" class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition">Subscribe</button>
+                    </form>
+                  </div>
+               </div>
+               <div class="mt-12 text-center">
+                 <p>&copy; iSABI, All Right Reserved.</p>
+                 <p>Designed By <a href="#" class="text-blue-400 hover:text-blue-600">AeedDavidon</a></p>
+              </div>
+          </div>
+       </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

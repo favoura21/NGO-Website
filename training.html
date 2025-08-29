@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>NGO Website</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+      <link rel="stylesheet" href="css/style.css">
+   </head>
+   <body class="font-sans bg-gray-100">
+      <!-- Top Bar -->
+      <div class="bg-gray-800 text-white py-2 px-4">
+            <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
+            
+             <!-- Contact Info -->
+              <div class="text-sm flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+                 <span>Dominican</span>
+                 <span class="hidden sm:inline">|</span>
+                 <span>info@example.com</span>
+              </div>
+            
+             <!-- Social Icons -->
+             <div class="flex flex-wrap justify-center items-center gap-3 mt-2 md:mt-0 text-sm">
+                 <span class="block sm:inline">Follow us:</span>
+                 <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-twitter"></i></a>
+                 <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-facebook-f"></i></a>
+                 <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-youtube"></i></a>
+                 <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+           </div>
+      </div>
+
+        <!-- Navigation -->
+       <nav class="navbar">
+          <div class="nav-container">
+             <!-- Logo -->
+             <div class="text-2xl font-bold">iSABI</div>
+             <!-- Desktop Menu -->
+              <ul class="nav-menu">
+                  <li class="nav-item">
+                     <a href="index.html" class="nav-link">Home</a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="about.html" class="nav-link">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="training.html" class="nav-link">Training</a>
+                  </li>
+                   <li class="nav-item dropdown">
+                      <a href="#" class="nav-link dropdown-toggle">
+                          Funding
+                         <span class="dropdown-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                         <li><a href="funding.html" class="dropdown-link">Fund us</a></li>
+                         <li><a href="donate.html" class="dropdown-link">Donate</a></li>
+                      </ul>
+                   </li>
+                  <li class="nav-item">
+                     <a href="apply.html" class="nav-link">Apply</a>
+                   </li>
+                  <li class="nav-item">
+                     <a href="testimonial.html" class="nav-link">Testimonials</a>
+                  </li>
+                   <li class="nav-item">
+                     <a href="contact.html" class="nav-link">Contact</a>
+                   </li>
+               </ul>
+             <!-- Mobile Menu Button -->
+               <div class="nav-toggle" id="mobile-menu">
+                 <span class="bar"></span>
+                 <span class="bar"></span>
+                 <span class="bar"></span>
+              </div>
+          </div>
+     </nav>
+
+      <!-- Mobile Sidebar Overlay -->
+      <div class="sidebar-overlay" id="sidebar-overlay"></div>
+           <!-- Mobile Sidebar -->
+           <div class="sidebar" id="sidebar">
+              <div class="sidebar-header">
+             <!-- Logo -->
+             <div class="text-2xl font-bold">iSABI</div>
+             <button class="sidebar-close" id="sidebar-close">&times;</button>
+          </div>
+          <ul class="sidebar-menu">
+             <li class="sidebar-item">
+                 <a href="index.html" class="sidebar-link">Home</a>
+              </li>
+             <li class="sidebar-item">
+                 <a href="about.html" class="sidebar-link">About Us</a>
+              </li>
+              <li class="sidebar-item">
+                 <a href="training.html" class="sidebar-link">Training</a>
+              </li>
+              <li class="sidebar-item dropdown">
+                    <a href="#" class="sidebar-link dropdown-toggle">
+                        Funding
+                        <span class="dropdown-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="funding.html" class="dropdown-link">Fund us</a></li>
+                        <li><a href="donate.html" class="dropdown-link">Donate</a></li>
+                    </ul>
+                </li>
+                <li class="sidebar-item">
+                   <a href="apply.html" class="sidebar-link">Apply</a>
+                </li>
+                <li class="sidebar-item">
+                    <a href="testimonial.html" class="sidebar-link">Testimonials</a>
+                </li>
+               <li class="sidebar-item">
+                  <a href="#" class="sidebar-link">Contact</a>
+               </li>
+          </ul>
+      </div>
+      <script>
+         // Mobile menu toggle functionality
+         const mobileMenu = document.getElementById('mobile-menu');
+         const sidebar = document.getElementById('sidebar');
+         const sidebarOverlay = document.getElementById('sidebar-overlay');
+         const sidebarClose = document.getElementById('sidebar-close');
+         const sidebarLinks = document.querySelectorAll('.sidebar-link');
+         // Open sidebar
+         mobileMenu.addEventListener('click', () => {
+         sidebar.classList.add('active');
+         sidebarOverlay.classList.add('active');
+         document.body.style.overflow = 'hidden';
+          });
+
+          // Close sidebar
+            function closeSidebar() {
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            }
+
+            sidebarClose.addEventListener('click', closeSidebar);
+            sidebarOverlay.addEventListener('click', closeSidebar);
+
+            // Close sidebar when clicking on links
+            function isMobileView() {
+           return window.innerWidth <= 768; // adjust breakpoint to your design
+            }
+
+           sidebar.addEventListener('click', (e) => {
+           const toggle = e.target.closest('.dropdown-toggle');
+           if (!toggle) return; // not a dropdown parent
+
+           // Only run click toggle if in mobile view
+           if (!isMobileView()) return;
+
+           e.preventDefault();
+
+          const dropdownMenu = toggle.nextElementSibling;
+          const isOpen = dropdownMenu.classList.contains('active');
+          dropdownMenu.classList.toggle('active', !isOpen);
+          toggle.classList.toggle('open', !isOpen);
+           });
+
+          // Close sidebar on child link click (works for both views)
+          document.querySelectorAll('.dropdown-menu .sidebar-link').forEach(link => {
+          link.addEventListener('click', () => {
+          closeSidebar();
+          });
+
+          });
+      </script>
+      <!-- Breadcrumb -->
+    <div class="bg-gray-200 py-4">
+        <div class="container mx-auto px-4">
+            <nav class="flex space-x-2 text-sm">
+               <a href="index.html" class="hover:text-blue-600">Home</a>
+               <span>></span>
+               <span class="text-blue-600">Training</span>
+            </nav>
+        </div>
+    </div>
+      <!-- Training Section -->
+      <div class="py-16 bg-gray-50">
+         <div class="container mx-auto px-4">
+            <!-- Heading -->
+            <h2 class="text-3xl font-bold text-center mb-4">About Our Training Programs</h2>
+            <p class="text-gray-600 mb-4">
+            Participants can apply to train for one of the three tracks: information technology, media production, or renewable energy.
+            The training will typically last six months and will have two pathways: the Entrepreneur Track and the Employee Track. The former will provide participants with the prerequisite skills to become entrepreneurs, while the latter will equip participants with advanced, employable skills for employment in the industry.</p>
+         </div>
+         <br>
+         <!-- Training Grid -->
+         <div class="grid md:grid-cols-3 gap-4 px-4">
+            <!-- Training Card -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+             <h3 class="text-xl font-semibold mb-2">information technology</h3>
+             <p class="text-gray-600 mb-4">In today's digital world, IT skills are essential. Our program covers computer literacy, software applications, web development, and digital tools that prepare participants for careers in technology, entrepreneurship, and beyond.</p>
+             <p class="text-sm text-gray-500 mb-4"><i class="fas fa-calendar-alt mr-2"></i> Next Session: Sept 20, 2025</p>
+             <a href="#" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700">Apply</a>
+            </div>
+            <!-- Training Card -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition   transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+              <h3 class="text-xl font-semibold mb-2">media production</h3>
+              <p class="text-gray-600 mb-4">Our media production training helps participants develop skills in content creation, photography, videography, and digital storytelling. By mastering these tools, individuals can amplify their voices, share impactful stories, and explore careers in creative industries.</p>
+              <p class="text-sm text-gray-500 mb-4"><i class="fas fa-calendar-alt mr-2"></i> Next Session: Oct 5, 2025</p>
+              <a href="#" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700">Apply</a>
+            </div>
+            <!-- Training Card -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+               <h3 class="text-xl font-semibold mb-2">renewable energy</h3>
+               <p class="text-gray-600 mb-4">We provide hands-on training in renewable energy solutions, equipping participants with the knowledge to design, install, and maintain clean energy systems. This program promotes sustainable living while creating new job opportunities in the growing green economy.</p>
+               <p class="text-sm text-gray-500 mb-4"><i class="fas fa-calendar-alt mr-2"></i> Next Session: Nov 12, 2025</p>
+               <a href="#" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700">Apply</a>
+            </div>
+        </div>
+      </div>
+      <br>
+      <!-- Training Facilities -->
+      <div class="py-16 bg-gray-50">
+         <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">Training Centers and Facilities</h2>
+            <p class="text-gray-600 mb-4">Training is held at the Dominican University, Ibadan, Nigeria</p>
+         </div>
+         <!-- After Training -->
+         <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4">After the Training</h2>
+            <p class="text-gray-600 mb-4">
+            After completing the training, individuals in the entrepreneurial pathway can begin their businesses. iSABI may provide some non-financial support to early entrepreneurs, such as mentorship, networking opportunities, and access to resources.
+            We are committed to helping our graduates succeed in their entrepreneurial ventures. For those in the employee pathway, iSABI will support you in finding employment. We work with selected job recruiting agencies to ensure that our trainees are equipped with the skills and competencies sought by prospective employers.</p>
+         </div>
+         <!-- Impact Section -->
+         <div class="mt-12 bg-blue-100 rounded-2xl p-6 max-w-3xl mx-auto">
+            <p class="text-lg font-semibold text-blue-800"><i class="fa-solid fa-globe"></i></i> Over 1,000 individuals trained across 5 communities.</p>
+         </div>
+      </div>
+      <!-- Footer -->
+      <div class="bg-gray-800 text-white py-16">
+         <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+               <div>
+                  <h3 class="text-xl font-bold mb-4">iSABI</h3>
+                  <p class="text-gray-400 mb-4">iSABI is an international, not-for-profit, non-governmental organisation that champions sustainable youth empowerment and job creation on the African continent. </p>
+                 <div class="flex space-x-4">
+                     <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                     <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                     <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                     <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                  </div>
+               </div>
+               <div>
+                <h3 class="text-xl font-bold mb-4">Address</h3>
+                <p class="text-gray-400">Dominican</p>
+                <p class="text-gray-400">+012 345 67890</p>
+                <p class="text-gray-400">info@example.com</p>
+               </div>
+               <div>
+                 <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                 <ul class="space-y-2">
+                   <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                   <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                   <li><a href="#" class="text-gray-400 hover:text-white">Our Services</a></li>
+                   <li><a href="#" class="text-gray-400 hover:text-white">Terms & Condition</a></li>
+                   <li><a href="#" class="text-gray-400 hover:text-white">Support</a></li>
+                  </ul>
+               </div>
+               <!-- Newsletter (Footer) -->
+               <div class="text-xl font-bold mb-4">
+                  <h3 class="text-xl font-bold mb-4">Subscribe to our newsletter</h3>
+                  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="flex items-center justify-center gap-2">
+                     <input type="email" name="email" placeholder="Your email" required class="px-3 py-2 w-48 sm:w-64 rounded-lg border border-gray-300 text-sm  focus:outline-none focus:ring-1 focus:ring-blue-500">
+                     <button type="submit" class="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition">Subscribe</button>
+                  </form>
+               </div>
+            </div>
+           <div class="mt-12 text-center">
+               <p>&copy; iSABI, All Right Reserved.</p>
+               <p>Designed By <a href="#" class="text-blue-400 hover:text-blue-600">AeedDavidon</a></p>
+            </div>
+         </div>
+      </div>
+      <script src="js/main.js"></script>
+   </body>
+</html>
