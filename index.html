@@ -8,73 +8,78 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
       <link rel="stylesheet" href="css/style.css">
    </head>
-   <body class="font-sans bg-gray-100">
-      <!-- Top Bar -->
-      <div class="bg-gray-800 text-white py-2 px-4">
-            <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
-            
-             <!-- Contact Info -->
-              <div class="text-sm flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
-                 <span>Dominican</span>
-                 <span class="hidden sm:inline">|</span>
-                 <span>info@example.com</span>
-              </div>
-            
-             <!-- Social Icons -->
-             <div class="flex flex-wrap justify-center items-center gap-3 mt-2 md:mt-0 text-sm">
-                 <span class="block sm:inline">Follow us:</span>
-                 <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-twitter"></i></a>
-                 <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-facebook-f"></i></a>
-                 <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-youtube"></i></a>
-                 <a href="#" class="hover:text-gray-300 p-1"><i class="fab fa-linkedin-in"></i></a>
-              </div>
-           </div>
-      </div>
+   <body>
+      <!-- Navigation -->
+      <nav class="navbar">
+         <div class="nav-container">
+            <!-- Logo -->
+            <div class="text-2xl font-bold">iSABI</div>
+            <!-- Desktop Menu -->
+            <ul class="nav-menu">
+               <li class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+               </li>
+               <li class="nav-item">
+                  <a href="about.html" class="nav-link">About Us</a>
+               </li>
+               <li class="nav-item">
+                  <a href="training.html" class="nav-link">Training</a>
+               </li>
+               <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle">
+                  Funding
+                  <span class="dropdown-arrow"><i class="fa-solid fa-chevron-down"></i></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                     <li>
+                        <a href="funding.html" class="dropdown-link">Fund us</a>
+                     </li>
+                     <li>
+                        <a href="donate.html" class="dropdown-link">Donate</a>
+                     </li>
+                  </ul>
+               </li>
+               <li class="nav-item">
+                 <a href="apply.html" class="nav-link">Apply</a>
+               </li>
+               <li class="nav-item">
+                  <a href="testimonial.html" class="nav-link">Testimonials</a>
+               </li>
+               <li class="nav-item">
+                  <a href="contact.html" class="nav-link">Contact</a>
+               </li>
+            </ul>
+            <!-- Mobile Menu Button -->
+            <div class="nav-toggle" id="mobile-menu">
+               <span class="bar"></span>
+               <span class="bar"></span>
+               <span class="bar"></span>
+            </div>
+         </div>
+      </nav>
 
-        <!-- Navigation -->
-       <nav class="navbar">
-          <div class="nav-container">
-             <!-- Logo -->
-             <div class="text-2xl font-bold">iSABI</div>
-             <!-- Desktop Menu -->
-              <ul class="nav-menu">
-                  <li class="nav-item">
-                     <a href="index.html" class="nav-link">Home</a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="about.html" class="nav-link">About Us</a>
-                  </li>
-                  <li class="nav-item">
-                     <a href="training.html" class="nav-link">Training</a>
-                  </li>
-                   <li class="nav-item dropdown">
-                      <a href="#" class="nav-link dropdown-toggle">
-                          Funding
-                         <span class="dropdown-arrow"><i class="fa-solid fa-chevron-down"></i></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                         <li><a href="funding.html" class="dropdown-link">Fund us</a></li>
-                         <li><a href="donate.html" class="dropdown-link">Donate</a></li>
-                      </ul>
-                   </li>
-                  <li class="nav-item">
-                     <a href="apply.html" class="nav-link">Apply</a>
-                   </li>
-                  <li class="nav-item">
-                     <a href="testimonial.html" class="nav-link">Testimonials</a>
-                  </li>
-                   <li class="nav-item">
-                     <a href="contact.html" class="nav-link">Contact</a>
-                   </li>
-               </ul>
-             <!-- Mobile Menu Button -->
-               <div class="nav-toggle" id="mobile-menu">
-                 <span class="bar"></span>
-                 <span class="bar"></span>
-                 <span class="bar"></span>
-              </div>
+     <br><br><br>
+      <!-- Top Bar -->
+
+     <div class="bg-gray-800 text-white py-2 px-4 relative z-20">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-2 text-center md:text-left">
+          <!-- Contact Info -->
+          <div class="text-sm flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
+              <span>Dominican</span>
+              <span class="hidden sm:inline">|</span>
+              <span>info@isabi.org</span>
+           </div>
+           <!-- Social Icons -->
+           <div class="flex flex-wrap justify-center items-center gap-3 mt-2 md:mt-0 text-sm">
+              <span class="block sm:inline">Follow us:</span>
+              <a href="#" aria-label="Follow us on Twitter" class="hover:text-gray-300 p-1"><i class="fab fa-twitter"></i></a>
+              <a href="#" aria-label="Follow us on Facebook" class="hover:text-gray-300 p-1"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" aria-label="Follow us on YouTube" class="hover:text-gray-300 p-1"><i class="fab fa-youtube"></i></a>
+              <a href="#" aria-label="Follow us on LinkedIn" class="hover:text-gray-300 p-1"><i class="fab fa-linkedin-in"></i></a>
           </div>
-     </nav>
+       </div>
+    </div>
+
 
       <!-- Mobile Sidebar Overlay -->
       <div class="sidebar-overlay" id="sidebar-overlay"></div>
@@ -168,6 +173,8 @@
 
           });
       </script>
+
+      
       <div class="slideshow-container">
           <div class="slide active">
               <img src="img/friends-5445618.jpg" alt="NGO Conference">
@@ -256,8 +263,7 @@
           // Initialize slideshow
           startInterval();
        </script>
-        <!-- Intro Sectiom -->
-         <div class="py-16 bg-gray-50 home">
+        <div class="py-16 bg-gray-50 home">
             <div class="container mx-auto px-4">
                <h2 class="text-3xl font-bold text-center mb-4">Welcome To iSABI</h2>
                <p class="text-gray-600 mb-4">iSABI is an international, not-for-profit, non-governmental organisation that champions sustainable youth empowerment and job creation on the African continent. We firmly believe in the transformative power of knowledge. When young people are equipped with technical expertise and entrepreneurial skills, they can catalyze positive change. 
