@@ -25,16 +25,8 @@
                <li class="nav-item">
                   <a href="training.html" class="nav-link">Training</a>
                </li>
-               <li class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle">
-                  Funding
-                  <span class="dropdown-arrow"><i class="fa-solid fa-chevron-down"></i></span>
-                  </a>
-                  <ul class="dropdown-menu">
-                     <li>
-                        <a href="funding.html" class="dropdown-link">Fund us</a>
-                     </li>
-                  </ul>
+                <li class="nav-item">
+                 <a href="funding.html" class="nav-link">Fund us</a>
                </li>
                <li class="nav-item">
                  <a href="apply.html" class="nav-link">Apply</a>
@@ -103,15 +95,9 @@
               <li class="sidebar-item">
                  <a href="training.html" class="sidebar-link">Training</a>
               </li>
-              <li class="sidebar-item dropdown">
-                    <a href="#" class="sidebar-link dropdown-toggle">
-                        Funding
-                        <span class="dropdown-arrow"><i class="fa-solid fa-chevron-down"></i></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="funding.html" class="dropdown-link">Fund us</a></li>
-                    </ul>
-                </li>
+              <li class="sidebar-item">
+                 <a href="funding.html" class="sidebar-link">Fund us</a>
+             </li>
                 <li class="sidebar-item">
                    <a href="apply.html" class="sidebar-link">apply</a>
                 </li>
@@ -157,8 +143,9 @@
             function isMobileView() {
            return window.innerWidth <= 768; // adjust breakpoint to your design
             }
-
-           sidebar.addEventListener('click', (e) => {
+         
+           // Dropdown functionality for mobile sidebar 
+          sidebar.addEventListener('click', (e) => {
            const toggle = e.target.closest('.dropdown-toggle');
            if (!toggle) return; // not a dropdown parent
 
@@ -180,6 +167,7 @@
           });
 
           });
+          
       </script>
 
       

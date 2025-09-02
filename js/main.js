@@ -77,28 +77,4 @@
             }
         }
     });
-
-    
-})(jQuery);
-let index = 0;
-const slides = document.querySelectorAll('.slide');
-const slideContainer = document.getElementById('slideContainer');
-const totalSlides = slides.length;
-
-function updateSlide() {
-    slideContainer.style.transform = `translateX(-${index * 100}%)`;
-}
-
-function nextSlide() {
-    if (index < totalSlides - 1) {
-        index++;
-        updateSlide();
-    }
-}
-
-function prevSlide() {
-    if (index > 0) {
-        index--;
-        updateSlide();
-    }
-}
+})
