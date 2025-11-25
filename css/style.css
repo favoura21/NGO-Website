@@ -395,9 +395,6 @@
 .dot.active, .dot:hover {
     background-color: #717171;
 }
-.home{
-    display: none;
-}
 /* Hamburger Animation */
 .nav-toggle.active .bar:nth-child(2) {
     opacity: 0;
@@ -825,9 +822,6 @@
     }
     .slide-overlay{
         display: none;
-    }
-    .home{
-        display:block;
     }
     .sidebar {
         width: 70%;
